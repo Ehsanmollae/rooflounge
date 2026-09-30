@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>روف‌لانژ: نمونه رنگ و فونت</title>
+<style>
+@font-face { font-family: "Vazirmatn"; src: url("../shared/fonts/Vazirmatn-wght.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Noto Kufi"; src: url("../shared/fonts/noto-kufi-arabic-arabic-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Noto Kufi"; src: url("../shared/fonts/noto-kufi-arabic-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Reem Kufi"; src: url("../shared/fonts/reem-kufi-arabic-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+200C-200E, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Marcellus"; src: url("../shared/fonts/marcellus-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../shared/fonts/cormorant-latin-wght-normal.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../shared/fonts/cormorant-latin-wght-italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; }
+
+/* Night values are the defaults: sections after the cinematic part stay in the brand's own navy and gold. */
+:root {
+  --bg: #0a1d3b; --surface: #0f2548; --ink: #f3ead8; --muted: #a9b3c6;
+  --accent: #c9a660; --accent-hi: #eacd7f; --accent-lo: #9c7b3e; --accent-text: #eacd7f; --brand: #c9a660;
+  --lamp: #ffd59a; --navy: #0a1d3b;
+  --font-display: "Noto Kufi", "Vazirmatn", sans-serif;
+  --font-latin: "Marcellus", "Cormorant", serif;
+  --font-body: "Vazirmatn", system-ui, sans-serif;
+  --spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(16px, 5vw, 72px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.line { stroke: color-mix(in srgb, var(--ink) 22%, transparent); }
+.wrap { width: min(1120px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+h1, h2, h3 { margin: 0; font-weight: 600; }
+p { margin: 0; }
+section { padding: 72px 0; border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+.section-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 36px); line-height: 1.3; margin-bottom: 10px; }
+.note { color: var(--muted); font-size: 14px; max-width: 62ch; }
+code { font-family: ui-monospace, monospace; font-size: 13px; direction: ltr; unicode-bidi: isolate; }
+
+/* ---- story clock bar ---- */
+.clockbar {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.clockbar .wrap { display: flex; align-items: center; gap: 18px; padding: 12px 0; }
+.clockbar label { font-size: 14px; color: var(--muted); white-space: nowrap; }
+.clockbar input { flex: 1; accent-color: var(--accent); min-width: 0; }
+.clockbar output { font-family: var(--font-display); font-size: 18px; min-width: 4.2em; text-align: center; color: var(--accent-text); }
+
+/* ---- hero lockup ---- */
+.lockup { display: flex; align-items: center; gap: 22px; direction: ltr; }
+.lockup svg { width: 58px; height: auto; color: var(--brand); }
+.lockup .word { font-family: var(--font-latin); font-size: 44px; line-height: 0.95; letter-spacing: 0.04em; color: var(--brand); }
+.intro { display: grid; gap: 28px; padding: 56px 0 64px; }
+.intro .display { font-family: var(--font-display); font-size: clamp(40px, 7vw, 88px); line-height: 1.15; font-weight: 700; }
+.intro .latin { font-family: var(--font-latin); letter-spacing: 0.22em; font-size: 14px; color: var(--muted); direction: ltr; text-align: right; }
+
+/* ---- swatches ---- */
+.states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.state { border-radius: 22px; padding: 22px; min-height: 260px; display: grid; align-content: space-between; gap: 18px; }
+.state h3 { font-family: var(--font-display); font-size: 26px; }
+.state .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.state .chip { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; padding: 4px 10px 4px 4px; border-radius: 999px; background: color-mix(in srgb, currentColor 10%, transparent); }
+.state .chip i { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.state small { font-size: 12px; opacity: .85; }
+.s-sunset { background: #f6e4d0; color: #0a1d3b; }
+.s-twilight { background: #5b3a70; color: #f6e4d0; }
+.s-night { background: #0a1d3b; color: #f3ead8; box-shadow: inset 0 0 0 1px rgba(201,166,96,.25); }
+
+/* ---- type ---- */
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+.specimen { border-radius: 22px; padding: 26px; background: color-mix(in srgb, var(--ink) 5%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent); display: grid; gap: 14px; }
+.specimen .tag { font-size: 13px; color: var(--accent-text); }
+.specimen .big { font-size: clamp(34px, 4.4vw, 58px); line-height: 1.2; }
+.specimen .mid { font-size: 26px; line-height: 1.4; }
+.specimen.a .big, .specimen.a .mid { font-family: "Noto Kufi", sans-serif; }
+.specimen.b .big, .specimen.b .mid { font-family: "Reem Kufi", sans-serif; }
+.specimen.latin { grid-column: 1 / -1; }
+.specimen.latin .big { font-family: "Marcellus", serif; letter-spacing: 0.08em; direction: ltr; text-align: left; }
+.specimen.latin .it { font-family: "Cormorant", serif; font-style: italic; font-size: 30px; direction: ltr; text-align: left; color: var(--muted); }
+.specimen.body p { font-size: 17px; max-width: 58ch; }
+
+/* ---- buttons ---- */
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 24px; }
+.btn {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 14px; min-height: 52px; padding: 8px 8px 8px 24px;
+  border: 0; border-radius: 999px; cursor: pointer; text-decoration: none;
+  font: 600 15px/1 var(--font-body); color: var(--navy);
+  background: linear-gradient(180deg, var(--accent-hi) 0%, var(--accent) 55%, var(--accent-lo) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(10,29,59,.2), 0 14px 30px -16px color-mix(in srgb, var(--accent) 80%, transparent);
+  transition: transform .5s var(--spring), box-shadow .5s var(--spring);
+}
+.btn::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.5) 50%, transparent 70%); transform: translateX(120%); transition: transform .9s var(--spring); }
+.btn:hover { transform: translateY(-2px); }
+.btn:hover::after { transform: translateX(-120%); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn-icon { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(10,29,59,.12); box-shadow: inset 0 0 0 1px rgba(10,29,59,.14); transition: transform .5s var(--spring); }
+.btn:hover .btn-icon { transform: translateX(-3px); }
+.btn-icon svg { width: 16px; height: 16px; }
+.btn.ghost { color: var(--ink); background: color-mix(in srgb, var(--bg) 40%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent); }
+.btn.ghost::after { background: linear-gradient(105deg, transparent 30%, color-mix(in srgb, var(--accent) 30%, transparent) 50%, transparent 70%); }
+.btn.ghost .btn-icon { background: color-mix(in srgb, var(--accent) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent); color: var(--accent-text); }
+.btn:focus-visible, .tabs button:focus-visible, .choice input:focus-visible + span { outline: 2px solid var(--accent-hi); outline-offset: 3px; }
+
+/* ---- sunset / night choice: each button carries its own hour's colour ---- */
+.choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 460px; }
+.choice { position: relative; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; }
+.choice span { display: grid; gap: 2px; padding: 16px 18px; border-radius: 20px; transition: transform .5s var(--spring), box-shadow .5s var(--spring); }
+.choice b { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+.choice small { font-size: 13px; opacity: .8; }
+.choice.sunset span { background: linear-gradient(160deg, #f9c28f, #f4a261 55%, #e76f51); color: #0a1d3b; }
+.choice.night span { background: radial-gradient(120% 120% at 20% 0%, #1b3566, #0a1d3b 60%); color: #f3ead8; box-shadow: inset 0 0 0 1px rgba(201,166,96,.35); }
+.choice input:not(:checked) + span { opacity: .55; transform: scale(.97); }
+.choice input:checked + span { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+
+/* ---- pill tabs, no scrollbar ---- */
+.tabs { display: flex; gap: 4px; padding: 5px; border-radius: 999px; overflow-x: auto; scrollbar-width: none; max-width: 100%; background: color-mix(in srgb, var(--accent) 7%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent); }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { flex: none; border: 0; background: none; cursor: pointer; padding: 10px 20px; border-radius: 999px; font: 15px var(--font-body); color: var(--muted); white-space: nowrap; transition: background .5s var(--spring), color .3s; }
+.tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--navy); background: linear-gradient(180deg, var(--accent-hi), var(--accent) 60%, var(--accent-lo)); box-shadow: inset 0 1px 0 rgba(255,255,255,.45); }
+
+/* ---- arched double-frame card: the arch comes from the brand mark ---- */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: 16px; margin-top: 24px; }
+.arch-card { padding: 6px; border-radius: 160px 160px 26px 26px; background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, transparent), color-mix(in srgb, var(--accent) 5%, transparent)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent); }
+.arch-core { border-radius: 154px 154px 20px 20px; overflow: hidden; background: var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+.arch-core img { width: 100%; height: auto; aspect-ratio: 4 / 4.4; object-fit: cover; }
+.arch-core .cap { padding: 16px 20px 20px; display: grid; gap: 4px; }
+.arch-core b { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+.arch-core span { font-size: 13.5px; color: var(--muted); direction: ltr; text-align: right; }
+
+/* ---- hours arc ---- */
+.hours { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; margin-top: 24px; }
+.hours svg { width: 260px; height: auto; overflow: visible; }
+.open-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; font-size: 15px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent); }
+.open-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.open-badge.is-open i { background: #7fd1a0; box-shadow: 0 0 0 4px rgba(127,209,160,.18); }
+
+/* ---- string lights ---- */
+.lights-demo { display: grid; gap: 14px; margin-top: 24px; max-width: 460px; }
+.lights { width: 100%; height: auto; overflow: visible; }
+.lights .wire { fill: none; stroke: color-mix(in srgb, var(--ink) 35%, transparent); stroke-width: 1.2; }
+.lights .bulb { fill: color-mix(in srgb, var(--ink) 18%, transparent); transition: fill .6s var(--spring); }
+.lights .glow { fill: var(--lamp); opacity: 0; transition: opacity .8s var(--spring); }
+.lights .on .bulb { fill: var(--lamp); }
+.lights .on .glow { opacity: .35; }
+
+/* ---- horizon wipe ---- */
+.horizon { position: relative; margin-top: 24px; border-radius: 22px; overflow: hidden; aspect-ratio: 16 / 8; max-width: 760px; background: #0a1d3b; }
+.horizon img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(var(--edge) 0 var(--edge) 0); }
+.horizon::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: linear-gradient(90deg, transparent, var(--lamp) 30%, #fff 50%, var(--lamp) 70%, transparent); box-shadow: 0 0 24px 4px color-mix(in srgb, var(--lamp) 60%, transparent); opacity: var(--line-o); }
+
+.hex { font-family: ui-monospace, monospace; font-size: 12px; direction: ltr; }
+footer { padding: 40px 0 64px; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 760px) {
+  .states, .type-grid, .hours { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .arch-card { border-radius: 100px 100px 20px 20px; }
+  .arch-core { border-radius: 94px 94px 16px 16px; }
+  .lockup .word { font-size: 34px; }
+  .hours svg { width: 220px; }
+  .clockbar label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+
+<div class="clockbar">
+  <div class="wrap">
+    <label for="clock">ساعت داستان</label>
+    <input id="clock" type="range" min="0" max="1000" value="1000" aria-describedby="clock-out">
+    <output id="clock-out" for="clock">۲۱:۳۰</output>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="intro">
+    <div class="lockup" aria-label="Roof Lounge">
+      <svg viewBox="0 0 480 780" fill="none" stroke="currentColor" stroke-width="20" aria-hidden="true"><use href="../assets/logo-mark.svg#half"/><use href="../assets/logo-mark.svg#half" transform="translate(480 0) scale(-1 1)"/></svg>
+      <div class="word">ROOF<br>LOUNGE</div>
+    </div>
+    <h1 class="display">بر بام شرق تهران</h1>
+    <p class="latin">ON THE ROOF OF TEHRAN</p>
+    <p class="note">اسلایدر بالا را بکشید: رنگ کل صفحه با «ساعت داستان» از غروب به شب می‌رود، همان کاری که اسکرول در لندینگ می‌کند. پایان شب همان سرمه‌ای <code>#0a1d3b</code> و طلایی لوگو و هایلایت‌های خودشان است. لوگو از روی عکس پروفایل با خط بازسازی شده، بدون «COMING SOON».</p>
+  </div>
+
+  <section>
+    <h2 class="section-title">سه حالت ساعت</h2>
+    <p class="note">غروب فقط برای آغاز است. بخش‌های بعد از اسکرول در حالت شب می‌مانند. مرجانی روی زمینه غروب برای متن کنتراست کافی ندارد (۲٫۵)، پس فقط تزئینی است و متن کوچک با مرجانی تیره نوشته می‌شود.</p>
+    <div class="states">
+      <div class="state s-sunset">
+        <h3>غروب</h3>
+        <div class="chips">
+          <span class="chip"><i style="background:#f6e4d0"></i><span class="hex">#f6e4d0</span></span>
+          <span class="chip"><i style="background:#f4a261"></i><span class="hex">#f4a261</span></span>
+          <span class="chip"><i style="background:#e76f51"></i><span class="hex">#e76f51</span></span>
+          <span class="chip"><i style="background:#8a3a22"></i><span class="hex">#8a3a22</span></span>
+        </div>
+        <small>متن سرمه‌ای روی زمینه: ۱۳٫۵ به ۱</small>
+      </div>
+      <div class="state s-twilight">
+        <h3>گرگ‌ومیش</h3>
+        <div class="chips">
+          <span class="chip"><i style="background:#5b3a70"></i><span class="hex">#5b3a70</span></span>
+          <span class="chip"><i style="background:#f6e4d0"></i><span class="hex">#f6e4d0</span></span>
+          <span class="chip"><i style="background:#ffd59a"></i><span class="hex">#ffd59a</span></span>
+        </div>
+        <small>متن کرم روی بنفش: ۷٫۴ به ۱</small>
+      </div>
+      <div class="state s-night">
+        <h3>شب، رنگ برند</h3>
+        <div class="chips">
+          <span class="chip"><i style="background:#0a1d3b"></i><span class="hex">#0a1d3b</span></span>
+          <span class="chip"><i style="background:#c9a660"></i><span class="hex">#c9a660</span></span>
+          <span class="chip"><i style="background:#eacd7f"></i><span class="hex">#eacd7f</span></span>
+          <span class="chip"><i style="background:#ffd59a"></i><span class="hex">#ffd59a</span></span>
+        </div>
+        <small>طلایی روی سرمه‌ای: ۷٫۳ به ۱ · نور لامپ <span class="hex">#ffd59a</span> ثابت</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">فونت: یکی از دو عنوان فارسی را انتخاب کنید</h2>
+    <p class="note">لاتین با Marcellus، سریف کتیبه‌ای نزدیک به «ROOF LOUNGE» لوگو. متن با Vazirmatn. همه فونت‌ها OFL و داخل مخزن‌اند، بدون CDN.</p>
+    <div class="type-grid">
+      <div class="specimen a">
+        <span class="tag">الف · Noto Kufi Arabic</span>
+        <div class="big">میز غروب یا میز شب؟</div>
+        <div class="mid">تعریف دوباره‌ی استاندارد</div>
+      </div>
+      <div class="specimen b">
+        <span class="tag">ب · Reem Kufi</span>
+        <div class="big">میز غروب یا میز شب؟</div>
+        <div class="mid">تعریف دوباره‌ی استاندارد</div>
+      </div>
+      <div class="specimen latin">
+        <span class="tag">لاتین · Marcellus و Cormorant ایتالیک</span>
+        <div class="big">ON THE ROOF OF TEHRAN</div>
+        <div class="it">Handmade ravioli, crafted to impress.</div>
+      </div>
+      <div class="specimen body" style="grid-column:1/-1">
+        <span class="tag">متن · Vazirmatn</span>
+        <p>تعریف دوباره‌ی استاندارد؛ برای آن‌هایی که دنبال کیفیت هستند. وقتی طعم، طراحی و جزئیات همراه هم می‌شود؛ هر نوشیدنی به امضایی از سبک متفاوت روف‌لانژ تبدیل می‌شود.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">دکمه‌ها و انتخاب غروب یا شب</h2>
+    <div class="row">
+      <a class="btn" href="#">رزرو میز در واتساپ <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></span></a>
+      <a class="btn ghost" href="#">منوی کامل <span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></span></a>
+    </div>
+    <div class="row">
+      <div class="choice-row" role="radiogroup" aria-label="زمان رزرو">
+        <label class="choice sunset"><input type="radio" name="when" value="غروب" checked><span><b>غروب</b><small>میز غروب</small></span></label>
+        <label class="choice night"><input type="radio" name="when" value="شب"><span><b>شب</b><small>میز شب</small></span></label>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">تب‌های منو و کارت طاقی</h2>
+    <p class="note">تب‌ها قرصی و بدون اسکرول‌بار؛ دسته‌ها عیناً از منوی دیجیتال خودشان. کارت‌ها دوقابه‌اند و بالایشان طاق است، از نشان لوگو. عکس‌ها از پیج خودشان.</p>
+    <div class="row">
+      <div class="tabs" role="tablist" aria-label="دسته‌های منو">
+        <button role="tab" aria-selected="false">پیش غذا</button>
+        <button role="tab" aria-selected="false">سالاد</button>
+        <button role="tab" aria-selected="false">پیتزا</button>
+        <button role="tab" aria-selected="false">غذای اصلی</button>
+        <button role="tab" aria-selected="false">سوشی</button>
+        <button role="tab" aria-selected="true">پاستا</button>
+        <button role="tab" aria-selected="false">اسپرسو بار</button>
+        <button role="tab" aria-selected="false">سوپر درینک</button>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="arch-card"><div class="arch-core"><img src="../assets/img/ravioli.webp" alt="راویولی دست‌ساز روی سنگ مرمر سیاه" width="900" height="1125"><div class="cap"><b>راویولی دست‌ساز</b><span>Handmade ravioli, crafted to impress.</span></div></div></div>
+      <div class="arch-card"><div class="arch-core"><img src="../assets/img/signature-drink.webp" alt="نوشیدنی امضایی روف‌لانژ با توت قرمز و برگ ریحان" width="900" height="1125"><div class="cap"><b>نوشیدنی‌های امضایی</b><span>روف‌لانژ</span></div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">ساعت کاری روی کمان</h2>
+    <p class="note">این کمان در صحنه‌های سینمایی «ساعت داستان» است (خورشید پایین می‌رود و ماه بالا می‌آید). در بخش ساعت کاری، همین کمان ساعت واقعی تهران را روی بازه ۱۲:۰۰ تا ۰۰:۰۰ نشان می‌دهد. روز تعطیل را نمی‌دانیم و در صفحه همین را می‌نویسیم.</p>
+    <div class="hours">
+      <svg viewBox="0 0 220 124" aria-hidden="true">
+        <defs><clipPath id="sky"><rect x="-10" y="-20" width="240" height="126"/></clipPath></defs>
+        <path class="line" d="M20 106 A 90 90 0 0 1 200 106" fill="none" stroke-width="1.2" stroke-dasharray="2 5"/>
+        <line class="line" x1="4" y1="106" x2="216" y2="106" stroke-width="1"/>
+        <g clip-path="url(#sky)">
+          <circle id="sun" r="9" fill="#f4a261"/>
+          <g id="moon"><circle r="8" fill="#f3ead8"/><circle r="8" cx="4" cy="-3" fill="var(--bg)"/></g>
+        </g>
+        <circle id="now" r="5" fill="var(--accent-hi)"/>
+        <text x="20" y="122" font-size="10" fill="var(--muted)" text-anchor="middle">۱۲:۰۰</text>
+        <text x="200" y="122" font-size="10" fill="var(--muted)" text-anchor="middle">۰۰:۰۰</text>
+      </svg>
+      <div style="display:grid;gap:12px;justify-items:start">
+        <span class="open-badge" id="open-badge"><i></i><span id="open-text">…</span></span>
+        <p class="note">ساعت کاری ۱۲:۰۰ تا ۰۰:۰۰، از بیو و هایلایت خودشان.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">نشانگر اسکرول: ریسه چراغ</h2>
+    <p class="note">به جای آیکون ماوس، یک ریسه باریک پایین صفحه. با اسکرول لامپ‌هایش یکی‌یکی روشن می‌شوند. اینجا با «ساعت داستان» بالا کار می‌کند.</p>
+    <div class="lights-demo">
+      <svg class="lights" id="lights" viewBox="0 0 320 60" aria-hidden="true"></svg>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">ورود هیرو: افق</h2>
+    <p class="note">به جای پنجره گرد، تصویر از یک خط نور افقی در وسط باز می‌شود. در موتور به شکل <code>wipe: "horizon"</code> اضافه می‌شود و گزینه‌های قبلی دست نمی‌خورند. اسلایدر زیر را بکشید.</p>
+    <input id="horizon-range" type="range" min="0" max="100" value="18" style="width:min(760px,100%);margin-top:18px;accent-color:var(--accent)" aria-label="باز شدن افق">
+    <div class="horizon" id="horizon"><img src="../assets/img/ravioli.webp" alt="" width="900" height="1125"></div>
+  </section>
+</main>
+
+<footer class="wrap">نمونه رنگ و فونت برای تأیید. این صفحه جزو لندینگ نیست.</footer>
+
+<script>
+// Story time: the page colour moves through three stops, sunset (0), twilight (0.5) and brand night (1).
+const STOPS = [
+  { bg: "#f6e4d0", surface: "#efd6ba", ink: "#0a1d3b", muted: "#5d4a4e", accent: "#f4a261", "accent-hi": "#f9c28f", "accent-lo": "#e07f4a", "accent-text": "#8a3a22", brand: "#9c7b3e" },
+  { bg: "#5b3a70", surface: "#4b2f5e", ink: "#f6e4d0", muted: "#d8c3dd", accent: "#f2c07e", "accent-hi": "#ffe2b5", "accent-lo": "#d59a5a", "accent-text": "#ffd59a", brand: "#eacd7f" },
+  { bg: "#0a1d3b", surface: "#0f2548", ink: "#f3ead8", muted: "#a9b3c6", accent: "#c9a660", "accent-hi": "#eacd7f", "accent-lo": "#9c7b3e", "accent-text": "#eacd7f", brand: "#c9a660" },
+];
+const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, t) => "#" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t).toString(16).padStart(2, "0")).join("");
+const fa = (n) => n.toLocaleString("fa-IR", { useGrouping: false });
+const pad = (n) => fa(n).padStart(2, "۰");
+
+function applyTheme(t) {
+  const seg = t < 0.5 ? 0 : 1, lt = (t - seg * 0.5) / 0.5;
+  const root = document.documentElement.style;
+  for (const k in STOPS[0]) root.setProperty(`--${k}`, mix(STOPS[seg][k], STOPS[seg + 1][k], lt));
+}
+
+// Story clock: 17:30 to 21:30. It is the story's hour, not a claim about sunset at the venue.
+function storyTime(t) {
+  const mins = 17 * 60 + 30 + Math.round(t * 240);
+  return `${pad(Math.floor(mins / 60))}:${pad(mins % 60)}`;
+}
+
+const arcPoint = (deg) => { const r = (deg * Math.PI) / 180; return [110 + 90 * Math.cos(r), 106 - 90 * Math.sin(r)]; };
+function placeSunMoon(t) {
+  const [sx, sy] = arcPoint(55 - t * 80);          // sun sinks toward the right end of the horizon
+  const [mx, my] = arcPoint(195 - t * 70);         // moon rises from the left end
+  document.getElementById("sun").setAttribute("transform", `translate(${sx} ${sy})`);
+  document.getElementById("moon").setAttribute("transform", `translate(${mx} ${my})`);
+}
+
+// String lights: a sagging wire with bulbs that light one by one.
+const N = 9, lights = document.getElementById("lights");
+const wire = (x) => 10 + 34 * (1 - Math.pow((x - 160) / 150, 2));
+lights.innerHTML = `<path class="wire" d="M10 10 Q 160 78 310 10"/>` + Array.from({ length: N }, (_, i) => {
+  const x = 10 + (300 / (N - 1)) * i, y = wire(x) + 5;
+  return `<g data-i="${i}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><circle class="glow" r="9"/><line x1="0" y1="-5" x2="0" y2="0" class="wire"/><ellipse class="bulb" rx="3.2" ry="4.2" cy="3"/></g>`;
+}).join("");
+const bulbs = [...lights.querySelectorAll("g")];
+const setLights = (t) => { const lit = Math.round(t * N); bulbs.forEach((b, i) => b.classList.toggle("on", i < lit)); };
+
+const clock = document.getElementById("clock"), out = document.getElementById("clock-out");
+function onClock() {
+  const t = clock.value / 1000;
+  applyTheme(t); placeSunMoon(t); setLights(t);
+  out.textContent = storyTime(t);
+}
+clock.addEventListener("input", onClock);
+onClock();
+
+// Opening hours on the arc with the real Tehran time. Closed days are unknown, so they are not claimed.
+function tehranMinutes() {
+  const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Tehran", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  const get = (t) => +parts.find((p) => p.type === t).value;
+  return get("hour") * 60 + get("minute");
+}
+function updateOpen() {
+  const m = tehranMinutes(), open = m >= 12 * 60;
+  const badge = document.getElementById("open-badge");
+  badge.classList.toggle("is-open", open);
+  document.getElementById("open-text").textContent = open ? `الان باز است · ساعت تهران ${pad(Math.floor(m / 60))}:${pad(m % 60)}` : "الان بسته است · از ۱۲:۰۰ باز می‌شود";
+  const t = Math.min(1, Math.max(0, (m - 720) / 720));
+  const [x, y] = arcPoint(180 - t * 180);
+  const now = document.getElementById("now");
+  now.setAttribute("cx", x); now.setAttribute("cy", y);
+  now.style.opacity = open ? 1 : 0.35;
+}
+updateOpen();
+setInterval(updateOpen, 30000);
+
+// Horizon wipe: the frame opens up and down from a line of light.
+const hr = document.getElementById("horizon-range"), hz = document.getElementById("horizon");
+function onHorizon() {
+  const t = hr.value / 100, e = t * t * (3 - 2 * t);
+  hz.style.setProperty("--edge", `${((1 - e) * 50).toFixed(2)}%`);
+  hz.style.setProperty("--line-o", (1 - e).toFixed(2));
+}
+hr.addEventListener("input", onHorizon);
+onHorizon();
+
+// Tabs demo
+document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 780" fill="none" stroke="currentColor" stroke-width="20" stroke-linejoin="miter">
+  <!-- Line reconstruction of the Roof Lounge arch mark from the brand's profile image. -->
+  <g id="half">
+    <path d="M36 52 C 160 92, 330 220, 396 432"/>
+    <path d="M30 190 C 200 206, 340 320, 392 500 C 404 580, 408 680, 410 752"/>
+    <path d="M446 184 C 442 420, 438 640, 446 752"/>
+    <path d="M382 418 C 398 520, 406 660, 408 752 L 452 752 C 441 640, 437 520, 438 418 Z" fill="currentColor" stroke="none"/>
+  </g>
+  <use href="#half" transform="translate(480 0) scale(-1 1)"/>
+</svg>
