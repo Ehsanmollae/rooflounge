@@ -33,7 +33,7 @@ export async function initLanding(options = {}) {
     frameRange: [4, 70],     // progress % over which the sequence plays
     imageScale: 0.9,         // < 1 leaves a padded border filled with bg
     length: { desktop: 900, mobile: 650 }, // container height in vh
-    wipe: "circle",          // circle | rise | none
+    wipe: "circle",          // circle | rise | horizon | none
     porthole: { desktop: [19, 27, 54], mobile: [26, 50, 30] }, // [radius %, x %, y %] at scroll 0
     blend: false,            // cross-fade between neighbouring frames for a smoother scrub
     // "cover" fills the screen and crops the sides on tall phones; "width" keeps the full
@@ -43,6 +43,9 @@ export async function initLanding(options = {}) {
   };
   // "rise" wipe: % of the top still hidden at scroll 0; either key may be given alone.
   config.riseFrom = { desktop: 100, mobile: 100, ...options.riseFrom };
+  // "horizon" wipe: % closed from the top and from the bottom at scroll 0, so 47 leaves a 6% band
+  // across the middle. The page draws its line of light from --horizon (0 closed, 1 open).
+  config.horizonFrom = { desktop: 47, mobile: 46, ...options.horizonFrom };
   config.fit = { desktop: "cover", mobile: "cover", ...options.fit };
 
   const root = document.documentElement;
@@ -291,6 +294,12 @@ export async function initLanding(options = {}) {
       const edge = (1 - eased) * from;
       canvasWrap.style.clipPath = `inset(${edge.toFixed(2)}% 0 0 0)`;
       root.style.setProperty("--wipe-edge", edge.toFixed(2));
+    } else if (config.wipe === "horizon") {
+      // The frame opens up and down from a band of light across the middle, like a horizon.
+      const from = isMobile ? config.horizonFrom.mobile : config.horizonFrom.desktop;
+      const edge = (1 - eased) * from;
+      canvasWrap.style.clipPath = `inset(${edge.toFixed(2)}% 0 ${edge.toFixed(2)}% 0)`;
+      root.style.setProperty("--horizon", eased.toFixed(4));
     } else {
       canvasWrap.style.opacity = eased;
     }
